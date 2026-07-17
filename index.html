@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Vesto — AI Finance Coach</title>
   <meta name="description" content="The first app that actually coaches you through your finances. AI coach, effortless tracking, weekly breakdowns. Coming to App Store.">
   <!-- MailerLite Universal -->
@@ -480,22 +480,8 @@
       margin-top: 16px;
     }
 
-    .steps-line {
-      display: none; /* убираем старую линию */
-    }
-
+    .steps-line { display: none; }
     .step { position: relative; }
-
-    .step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 40px;
-      left: calc(50% + 40px);
-      width: calc(100% - 80px);
-      height: 1px;
-      background: linear-gradient(90deg, rgba(0,200,150,0.8), rgba(0,200,150,0.3));
-      z-index: 0;
-    }
 
     .step {
       display: flex;
@@ -679,7 +665,7 @@
   <div class="form-box">
     <div class="form-row">
       <input type="email" data-placeholder-en="your@email.com" data-placeholder-ru="твой@email.com" placeholder="your@email.com" id="emailInput">
-      <button onclick="submitEmail('emailInput', 'btn1')" id="btn1" data-en="Get early access" data-ru="Войти первым">Get early access</button>
+      <button onclick="submitEmail('emailInput', 'btn1')" id="btn1" data-en="Get early access" data-ru="Получить ранний доступ">Get early access</button>
     </div>
     <div id="msg1" style="font-size:13px; margin-top:8px; display:none;"></div>
   </div>
@@ -856,7 +842,7 @@
   <div style="max-width:440px; margin: 0 auto 20px;">
     <div class="form-row">
       <input type="email" data-placeholder-en="your@email.com" data-placeholder-ru="твой@email.com" placeholder="your@email.com" id="emailInput2">
-      <button onclick="submitEmail('emailInput2', 'btn2')" id="btn2" data-en="Get early access" data-ru="Войти первым">Get early access</button>
+      <button onclick="submitEmail('emailInput2', 'btn2')" id="btn2" data-en="Get early access" data-ru="Получить ранний доступ">Get early access</button>
     </div>
     <div id="msg2" style="font-size:13px; margin-top:8px; display:none;"></div>
   </div>
