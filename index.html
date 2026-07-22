@@ -338,6 +338,118 @@
 
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+    /* PHONES */
+    .phones-section { position: relative; }
+
+    .phones-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      max-width: 100vw;
+      background: radial-gradient(circle, rgba(0,200,150,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .phones {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 56px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phone-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .iphone {
+      width: 290px;
+      background: linear-gradient(145deg, #3a3f4b 0%, #1c2028 45%, #2a2f3a 100%);
+      border-radius: 54px;
+      padding: 11px;
+      position: relative;
+      box-shadow:
+        inset 0 0 2px 1px rgba(255,255,255,0.12),
+        0 24px 64px rgba(0,0,0,0.55),
+        0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    /* side buttons */
+    .iphone::before {
+      content: '';
+      position: absolute;
+      left: -2px; top: 120px;
+      width: 3px; height: 30px;
+      background: #3a3f4b;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 46px 0 #3a3f4b, 0 104px 0 #3a3f4b;
+    }
+
+    .iphone::after {
+      content: '';
+      position: absolute;
+      right: -2px; top: 176px;
+      width: 3px; height: 64px;
+      background: #3a3f4b;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .iphone-screen {
+      position: relative;
+      border-radius: 43px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 9 / 19.5;
+    }
+
+    .iphone-screen img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .iphone-island {
+      position: absolute;
+      top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 92px; height: 27px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .phone-caption {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .phone-caption::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 720px) {
+      .phones { gap: 40px; }
+      .iphone { width: 230px; border-radius: 44px; padding: 9px; }
+      .iphone-screen { border-radius: 35px; }
+      .iphone-island { width: 74px; height: 22px; top: 8px; }
+    }
+
     /* SECTIONS */
     section { padding: 80px 24px; max-width: 1000px; margin: 0 auto; }
 
@@ -707,6 +819,35 @@
   </div>
 </div>
 
+<!-- SCREENSHOTS -->
+<section class="fade-up phones-section">
+  <div class="section-kicker" data-en="INSIDE THE APP" data-ru="ВНУТРИ ПРИЛОЖЕНИЯ">INSIDE THE APP</div>
+  <h2 class="section-title" data-en="This is what clarity<br>looks like." data-ru="Вот как выглядит<br>ясность.">This is what clarity<br>looks like.</h2>
+  <p class="section-sub" data-en="Your money at a glance — and a coach who talks you through it." data-ru="Твои деньги как на ладони — и коуч, который всё объяснит.">Your money at a glance — and a coach who talks you through it.</p>
+
+  <div class="phones">
+    <div class="phone-col fade-up">
+      <div class="iphone">
+        <div class="iphone-screen">
+          <div class="iphone-island"></div>
+          <img class="lang-screenshot" src="screen-home-en.jpg" data-src-en="screen-home-en.jpg" data-src-ru="screen-home-ru" alt="Vesto home screen" loading="lazy">
+        </div>
+      </div>
+      <div class="phone-caption" data-en="Home — everything at a glance" data-ru="Главный экран — всё как на ладони">Home — everything at a glance</div>
+    </div>
+
+    <div class="phone-col fade-up">
+      <div class="iphone">
+        <div class="iphone-screen">
+          <div class="iphone-island"></div>
+          <img class="lang-screenshot" src="screen-chat-en.jpg" data-src-en="screen-chat-en.jpg" data-src-ru="screen-chat-ru.jpg" alt="Vesto AI coach chat" loading="lazy">
+        </div>
+      </div>
+      <div class="phone-caption" data-en="Coach — advice on your real numbers" data-ru="Коуч — советы по твоим реальным цифрам">Coach — advice on your real numbers</div>
+    </div>
+  </div>
+</section>
+
 <!-- WHO IT'S FOR -->
 <section class="fade-up">
   <div class="section-kicker" data-en="WHO IT'S FOR" data-ru="ДЛЯ КОГО">WHO IT'S FOR</div>
@@ -943,6 +1084,11 @@
 
     document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
       el.placeholder = el.getAttribute('data-placeholder-' + lang);
+    });
+
+    document.querySelectorAll('.lang-screenshot').forEach(img => {
+      const src = img.getAttribute('data-src-' + lang);
+      if (src) img.src = src;
     });
   }
 
